@@ -23,7 +23,6 @@ python3 token_extractor.py
 
 pip3 install pycrypto
 pip3 install python-miio
-إذا حدث أي مشكلة ، جرب استخدام sudo
 
 الخطوة الثامنة: باستخدام الكود الجديد ، قم بتشغيل السطر التالي:
 miiocli yeelight --ip عنوان_IP_الخاص_بالجهاز --token TOKEN_الخاص_بالجهاز set_developer_mode 1
