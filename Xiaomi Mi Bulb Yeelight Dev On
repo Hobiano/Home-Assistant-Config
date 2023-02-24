@@ -1,0 +1,36 @@
+الخطوة الأولى: استخدم الإصدار الأخير من تطبيق Mi Home وسجّل مصباحك. لا تقلق إذا احتاج إلى التحديث ، لا تتردد في القيام بذلك.
+
+الخطوة الثانية: احصل على عنوان IP الخاص بالجهاز. يمكنك القيام بذلك باستخدام Nmap أو تطبيق Fing.
+
+الخطوة الثالثة: قم بتثبيت نظام Linux أو نظام Windows 10 وتثبيت نظام Ubuntu subsystem أو Conda، أي نظام يتيح لك استخدام pip3 والقيام بعملية wget ، يجب أن يكون هذا النظام في نفس شبكة الجهاز الذي تريد الربط به.
+
+الخطوة الرابعة: قم بتنزيل وفك ضغط الأرشيف (المحدث بواسطة @mkitowski):
+
+wget https://github.com/PiotrMachowski/Xiaomi-cloud-tokens-extractor/releases/latest/download/token_extractor.zip 115
+unzip token_extractor.zip
+cd token_extractor
+
+ثم قم بتثبيت البرامج الضرورية وتشغيل البرنامج النصي:
+
+pip3 install -r requirements.txt
+python3 token_extractor.py
+
+الخطوة الخامسة: استخدم token_extractor.py للحصول على رمز TOKEN للأجهزة. يجب كتابة اسم المستخدم وكلمة المرور الخاصة بك من تطبيق Mi Home.
+
+الخطوة السادسة: استخدم تطبيق Fing للحصول على عنوان IP الخاص بالجهاز.
+
+الخطوة السابعة: قم بتشغيل هذا الكود في الطرفية باستخدام pip3 وتثبيت البرنامج الضروري:
+
+pip3 install pycrypto
+pip3 install python-miio
+إذا حدث أي مشكلة ، جرب استخدام sudo
+
+الخطوة الثامنة: باستخدام الكود الجديد ، قم بتشغيل السطر التالي:
+miiocli yeelight --ip عنوان_IP_الخاص_بالجهاز --token TOKEN_الخاص_بالجهاز set_developer_mode 1
+
+يجب أن تعيد الخطوة الأخيرة شيئًا مثل:
+
+Setting developer mode to True
+ok
+
+الخطوة التاسعة: انتقل إلى HA وأضف الجهاز مع yeelight.
